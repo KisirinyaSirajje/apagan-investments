@@ -1,0 +1,411 @@
+/* ==========================================================================
+   APAGAN INVESTMENTS UGANDA — Responsive Styles
+   responsive.css
+   ========================================================================== */
+
+/* ── Large Screens (> 1400px) ────────────────────────────────────────── */
+@media (min-width: 1600px) {
+  :root {
+    font-size: 18px;
+  }
+
+  .container {
+    max-width: 1400px;
+  }
+}
+
+/* ── Desktop ≤ 1200px ────────────────────────────────────────────────── */
+@media (max-width: 1200px) {
+  .hero__title {
+    font-size: var(--fs-5xl);
+  }
+
+  .footer__grid {
+    grid-template-columns: 2fr 1fr 1fr;
+  }
+
+  .footer__grid > *:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ── Tablet ≤ 1024px ─────────────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .grid--4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .grid--3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .split {
+    grid-template-columns: 1fr;
+    gap: var(--space-12);
+  }
+
+  .split--reverse {
+    direction: ltr;
+  }
+
+  .split__content {
+    max-width: 100%;
+  }
+
+  .hero__title {
+    font-size: var(--fs-4xl);
+  }
+
+  .hero__stats {
+    gap: var(--space-8);
+  }
+
+  .section__title {
+    font-size: var(--fs-3xl);
+  }
+
+  .gallery-grid {
+    columns: 2;
+  }
+
+  .industry-detail {
+    grid-template-columns: 1fr;
+    gap: var(--space-10);
+  }
+
+  .industry-detail:nth-child(even) {
+    direction: ltr;
+  }
+
+  .timeline::before {
+    left: 20px;
+  }
+
+  .timeline__item {
+    width: 100%;
+    padding-left: 56px !important;
+    padding-right: 0 !important;
+    text-align: left !important;
+  }
+
+  .timeline__item:nth-child(even) {
+    margin-left: 0;
+  }
+
+  .timeline__dot {
+    left: 12px !important;
+    right: auto !important;
+  }
+
+  /* Mobile nav */
+  .header__nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 320px;
+    max-width: 85vw;
+    height: 100vh;
+    background: var(--color-bg);
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 100px var(--space-8) var(--space-8);
+    gap: var(--space-1);
+    transform: translateX(100%);
+    transition: transform var(--duration-slow) var(--ease-in-out);
+    box-shadow: -8px 0 40px rgba(0,0,0,0.12);
+    overflow-y: auto;
+  }
+
+  .header__nav.open {
+    transform: translateX(0);
+  }
+
+  .header__nav a {
+    color: var(--color-text) !important;
+    font-size: var(--fs-base);
+    width: 100%;
+    padding: var(--space-3) var(--space-4);
+  }
+
+  .header__cta {
+    margin-top: var(--space-4);
+    width: 100%;
+    justify-content: center;
+  }
+
+  .header__toggle {
+    display: flex;
+  }
+
+  .header__overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: -1;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--duration-base) var(--ease-out),
+                visibility var(--duration-base) var(--ease-out);
+  }
+
+  .header__overlay.active {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+/* ── Tablet portrait ≤ 768px ─────────────────────────────────────────── */
+@media (max-width: 768px) {
+  :root {
+    --container-padding: 1.25rem;
+  }
+
+  .section {
+    padding: var(--space-16) 0;
+  }
+
+  .section--lg {
+    padding: var(--space-20) 0;
+  }
+
+  .section__title {
+    font-size: var(--fs-2xl);
+  }
+
+  .section__header {
+    margin-bottom: var(--space-12);
+  }
+
+  .hero {
+    min-height: auto;
+  }
+
+  .hero__content {
+    padding: 140px 0 var(--space-16);
+  }
+
+  .hero__title {
+    font-size: var(--fs-3xl);
+  }
+
+  .hero__desc {
+    font-size: var(--fs-base);
+  }
+
+  .hero__stats {
+    flex-wrap: wrap;
+    gap: var(--space-6);
+  }
+
+  .hero__stat-number {
+    font-size: var(--fs-2xl);
+  }
+
+  .page-banner {
+    min-height: 280px;
+    padding: var(--space-24) 0 var(--space-12);
+  }
+
+  .page-banner__title {
+    font-size: var(--fs-3xl);
+  }
+
+  .grid--2,
+  .grid--3,
+  .grid--4 {
+    grid-template-columns: 1fr;
+  }
+
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
+  }
+
+  .stat {
+    padding: var(--space-6);
+  }
+
+  .stat__number {
+    font-size: var(--fs-3xl);
+  }
+
+  .footer__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-10);
+  }
+
+  .footer__grid > *:last-child {
+    grid-column: auto;
+  }
+
+  .footer__bottom {
+    flex-direction: column;
+    gap: var(--space-4);
+    text-align: center;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-grid {
+    columns: 1;
+  }
+
+  .cta-section__title {
+    font-size: var(--fs-2xl);
+  }
+
+  .error-page__code {
+    font-size: 6rem;
+  }
+
+  .error-page__title {
+    font-size: var(--fs-2xl);
+  }
+
+  .map-container {
+    height: 300px;
+  }
+
+  .search-bar {
+    flex-direction: column;
+  }
+
+  .news-layout {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ── Phone ≤ 480px ───────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .hero__title {
+    font-size: var(--fs-2xl);
+  }
+
+  .hero__actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hero__actions .btn {
+    width: 100%;
+  }
+
+  .hero__stats {
+    flex-direction: column;
+    gap: var(--space-6);
+    text-align: center;
+  }
+
+  .section__title {
+    font-size: var(--fs-xl);
+  }
+
+  .page-banner__title {
+    font-size: var(--fs-2xl);
+  }
+
+  .stats {
+    grid-template-columns: 1fr;
+  }
+
+  .btn--lg {
+    padding: var(--space-4) var(--space-8);
+    font-size: var(--fs-sm);
+  }
+
+  .cta-section__actions {
+    flex-direction: column;
+  }
+
+  .cta-section__actions .btn {
+    width: 100%;
+  }
+
+  .whatsapp-float {
+    width: 48px;
+    height: 48px;
+    bottom: var(--space-5);
+    right: var(--space-5);
+  }
+
+  .back-to-top {
+    bottom: var(--space-5);
+    right: calc(var(--space-5) + 60px);
+    width: 38px;
+    height: 38px;
+  }
+
+  .contact-info-card {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+
+  .gallery-filters {
+    gap: var(--space-2);
+  }
+
+  .gallery-filter-btn {
+    padding: var(--space-2) var(--space-4);
+    font-size: var(--fs-xs);
+  }
+
+  .testimonial__quote {
+    font-size: var(--fs-base);
+  }
+
+  .cert-badge {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+}
+
+/* ── Landscape phones ────────────────────────────────────────────────── */
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero {
+    min-height: auto;
+  }
+
+  .hero__content {
+    padding: 100px 0 var(--space-12);
+  }
+
+  .hero__title {
+    font-size: var(--fs-2xl);
+  }
+
+  .page-banner {
+    min-height: 220px;
+    padding: var(--space-20) 0 var(--space-10);
+  }
+}
+
+/* ── Print ───────────────────────────────────────────────────────────── */
+@media print {
+  .header,
+  .footer,
+  .whatsapp-float,
+  .back-to-top,
+  .scroll-progress,
+  .loader {
+    display: none !important;
+  }
+
+  body {
+    color: #000;
+    background: #fff;
+  }
+
+  .section--dark {
+    background: #fff;
+    color: #000;
+  }
+}

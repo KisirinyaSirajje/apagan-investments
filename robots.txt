@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /php/
+Disallow: /assets/fonts/
+
+Sitemap: https://www.apaganinvestments.co.ug/sitemap.xml
