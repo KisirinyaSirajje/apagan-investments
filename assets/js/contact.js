@@ -57,31 +57,31 @@
       submitBtn.textContent = 'Sending...';
       submitBtn.disabled = true;
 
-      /* Send via fetch */
-      fetch('php/contact.php', {
-        method: 'POST',
-        body: formData
-      })
-        .then(function (response) {
-          return response.json();
-        })
-        .then(function (data) {
-          if (data.success) {
-            showMessage('success', data.message || 'Your message has been sent successfully. We will get back to you shortly.');
-            form.reset();
-          } else {
-            showMessage('error', data.message || 'Something went wrong. Please try again.');
-          }
-        })
-        .catch(function () {
-          /* If no PHP server, show success for demo */
-          showMessage('success', 'Thank you for your message! We will get back to you within 24 hours.');
-          form.reset();
-        })
-        .finally(function () {
-          submitBtn.textContent = originalText;
-          submitBtn.disabled = false;
-        });
+      /* Open default email client */
+      var mailtoEmail = "masagaziruth6@gmail.com";
+      var mailSubject = encodeURIComponent("New Website Inquiry: " + subject.value);
+      var companyValue = form.querySelector('#company') ? form.querySelector('#company').value : "Not provided";
+      
+      var mailBody = encodeURIComponent(
+        "Name: " + name.value + "\n" +
+        "Email: " + email.value + "\n" +
+        "Phone: " + phone.value + "\n" +
+        "Company: " + companyValue + "\n" +
+        "Inquiry Type: " + subject.value + "\n\n" +
+        "Message:\n" + message.value
+      );
+
+      var mailtoLink = "mailto:" + mailtoEmail + "?subject=" + mailSubject + "&body=" + mailBody;
+      
+      /* Trigger the email client */
+      window.location.href = mailtoLink;
+
+      /* Show success message in UI and reset */
+      showMessage('success', 'Your email client has been opened to send the message!');
+      form.reset();
+      
+      submitBtn.textContent = originalText;
+      submitBtn.disabled = false;
     });
 
     /* Remove error style on input */
