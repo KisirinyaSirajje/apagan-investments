@@ -19,11 +19,11 @@
       clearMessages();
 
       /* Gather values */
-      var name = form.querySelector('#contact-name');
-      var email = form.querySelector('#contact-email');
-      var phone = form.querySelector('#contact-phone');
-      var subject = form.querySelector('#contact-subject');
-      var message = form.querySelector('#contact-message');
+      var name = form.querySelector('#name');
+      var email = form.querySelector('#email');
+      var phone = form.querySelector('#phone');
+      var subject = form.querySelector('#subject');
+      var message = form.querySelector('#message');
 
       /* Validate */
       var errors = [];
@@ -85,7 +85,7 @@
     });
 
     /* Remove error style on input */
-    form.querySelectorAll('.form-control').forEach(function (input) {
+    form.querySelectorAll('.form-input').forEach(function (input) {
       input.addEventListener('input', function () {
         this.style.borderColor = '';
       });
@@ -104,25 +104,36 @@
   }
 
   function clearMessages() {
-    var existing = document.querySelectorAll('.form-message');
-    existing.forEach(function (msg) { msg.remove(); });
+    var statusDiv = document.getElementById('formMessage');
+    if (statusDiv) {
+      statusDiv.style.display = 'none';
+      statusDiv.textContent = '';
+    }
   }
 
   function showMessage(type, text) {
-    var form = document.getElementById('contactForm');
-    if (!form) return;
+    var statusDiv = document.getElementById('formMessage');
+    if (!statusDiv) return;
 
-    var div = document.createElement('div');
-    div.className = 'form-message form-message--' + type;
-    div.textContent = text;
-    form.appendChild(div);
+    statusDiv.textContent = text;
+    statusDiv.style.display = 'block';
+    statusDiv.style.opacity = '1';
+    
+    if (type === 'error') {
+      statusDiv.style.backgroundColor = 'rgba(239, 68, 68, 0.1)';
+      statusDiv.style.color = 'var(--color-error)';
+      statusDiv.style.border = '1px solid rgba(239, 68, 68, 0.2)';
+    } else {
+      statusDiv.style.backgroundColor = 'rgba(16, 185, 129, 0.1)';
+      statusDiv.style.color = 'var(--color-success)';
+      statusDiv.style.border = '1px solid rgba(16, 185, 129, 0.2)';
+    }
 
     /* Auto-hide after 8 seconds */
     setTimeout(function () {
-      if (div.parentNode) {
-        div.style.opacity = '0';
-        setTimeout(function () { div.remove(); }, 300);
-      }
+      statusDiv.style.transition = 'opacity 0.3s ease';
+      statusDiv.style.opacity = '0';
+      setTimeout(function () { statusDiv.style.display = 'none'; }, 300);
     }, 8000);
   }
 

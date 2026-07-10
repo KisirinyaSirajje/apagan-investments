@@ -18,19 +18,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Validate
     if (empty($name) || empty($email) || empty($phone) || empty($subject_type) || empty($message)) {
+        $response['success'] = false;
         $response['message'] = 'Please fill out all required fields.';
         echo json_encode($response);
         exit;
     }
 
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $response['success'] = false;
         $response['message'] = 'Please enter a valid email address.';
         echo json_encode($response);
         exit;
     }
 
     // Set recipient email address (Apagan Investments)
-    $recipient = "apagan.invest@gmail.com"; 
+    $recipient = "masagaziruth6@gmail.com"; 
 
     // Email Subject
     $email_subject = "New Website Inquiry: " . $subject_type;
@@ -54,16 +56,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Send Email
     if (mail($recipient, $email_subject, $email_content, $email_headers)) {
         http_response_code(200);
+        $response['success'] = true;
         $response['status'] = 'success';
         $response['message'] = 'Thank you! Your message has been sent. Our team will contact you shortly.';
     } else {
         http_response_code(500);
+        $response['success'] = false;
+        $response['status'] = 'error';
         $response['message'] = 'Oops! Something went wrong and we couldn\'t send your message. Please try calling us directly.';
     }
 
     echo json_encode($response);
 } else {
     http_response_code(403);
+    $response['success'] = false;
     $response['message'] = 'There was a problem with your submission, please try again.';
     echo json_encode($response);
 }

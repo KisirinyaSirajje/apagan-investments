@@ -157,6 +157,11 @@
     opacity: 1;
     visibility: visible;
   }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-10);
+  }
 }
 
 /* ── Tablet portrait ≤ 768px ─────────────────────────────────────────── */
@@ -279,6 +284,10 @@
 
   .news-layout {
     grid-template-columns: 1fr !important;
+  }
+
+  .contact-form {
+    grid-template-columns: 1fr;
   }
 }
 
