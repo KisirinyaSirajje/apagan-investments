@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Set recipient email address (Apagan Investments)
-    $recipient = "masagaziruth6@gmail.com"; 
+    $recipient = "apagan.invest@gmail.com"; 
 
     // Email Subject
     $email_subject = "New Website Inquiry: " . $subject_type;

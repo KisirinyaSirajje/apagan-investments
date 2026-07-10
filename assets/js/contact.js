@@ -58,7 +58,7 @@
       submitBtn.disabled = true;
 
       /* Open default email client */
-      var mailtoEmail = "masagaziruth6@gmail.com";
+      var mailtoEmail = "apagan.invest@gmail.com";
       var mailSubject = encodeURIComponent("New Website Inquiry: " + subject.value);
       var companyValue = form.querySelector('#company') ? form.querySelector('#company').value : "Not provided";
       
