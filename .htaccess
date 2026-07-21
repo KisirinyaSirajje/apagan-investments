@@ -4,6 +4,11 @@ Options -Indexes
 # Error documents
 ErrorDocument 404 /404.html
 
+# Header configuration for SEO & Search Engine Indexing
+<IfModule mod_headers.c>
+  Header set X-Robots-Tag "index, follow"
+</IfModule>
+
 # Enable GZIP compression
 <IfModule mod_deflate.c>
   AddOutputFilterByType DEFLATE text/plain
@@ -24,6 +29,7 @@ ErrorDocument 404 /404.html
   ExpiresByType image/jpeg "access plus 1 year"
   ExpiresByType image/gif "access plus 1 year"
   ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
   ExpiresByType image/webp "access plus 1 year"
   ExpiresByType text/css "access plus 1 month"
   ExpiresByType application/pdf "access plus 1 month"
@@ -33,9 +39,16 @@ ErrorDocument 404 /404.html
   ExpiresDefault "access plus 2 days"
 </IfModule>
 
-# Remove .html extension from URLs (optional, but good for SEO/clean URLs)
+# URL rewriting & 301 redirects for Search Console indexing
 <IfModule mod_rewrite.c>
   RewriteEngine On
+  
+  # Redirect HTTP to HTTPS
+  RewriteCond %{HTTPS} off
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+  
+  # Clean URL routing
   RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
   RewriteRule ^([^\.]+)$ $1.html [NC,L]
 </IfModule>

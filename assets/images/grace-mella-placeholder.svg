@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300">
+  <defs>
+    <linearGradient id="grad-gm" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0d5c3a" />
+      <stop offset="100%" stop-color="#138855" />
+    </linearGradient>
+    <linearGradient id="bg-grad-gm" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f0f7f4" />
+      <stop offset="100%" stop-color="#e1efe9" />
+    </linearGradient>
+  </defs>
+  <!-- Background circle -->
+  <rect width="100%" height="100%" fill="url(#bg-grad-gm)" rx="150" />
+  <!-- Outer ring -->
+  <circle cx="150" cy="150" r="145" fill="none" stroke="url(#grad-gm)" stroke-width="4" stroke-dasharray="8 6" opacity="0.6"/>
+  <!-- User Silhouette (Female) -->
+  <g fill="url(#grad-gm)">
+    <!-- Head & Hair outline -->
+    <circle cx="150" cy="112" r="46" />
+    <!-- Hair volume/style -->
+    <path d="M102,115 C98,75 120,55 150,55 C180,55 202,75 198,115 C190,95 175,85 150,85 C125,85 110,95 102,115 Z" fill="url(#grad-gm)"/>
+    <!-- Shoulders -->
+    <path d="M75,245 C75,185 108,172 150,172 C192,172 225,185 225,245 Z" />
+  </g>
+  <!-- Initials overlay badge -->
+  <rect x="95" y="225" width="110" height="34" rx="17" fill="#0d5c3a" />
+  <text x="150" y="248" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" fill="#ffffff" text-anchor="middle" letter-spacing="1">GPM - OM</text>
+</svg>
