@@ -203,14 +203,8 @@ p {
 .header__logo-icon {
   width: 40px;
   height: 40px;
-  background: var(--color-secondary);
   border-radius: var(--radius-md);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: var(--fw-extrabold);
-  font-size: var(--fs-lg);
-  color: var(--color-text-inverse);
+  object-fit: cover;
   flex-shrink: 0;
 }
 
@@ -1535,14 +1529,9 @@ textarea.form-control {
 .footer__logo-icon {
   width: 40px;
   height: 40px;
-  background: var(--color-secondary);
   border-radius: var(--radius-md);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: var(--fw-extrabold);
-  font-size: var(--fs-lg);
-  color: var(--color-text-inverse);
+  object-fit: cover;
+  flex-shrink: 0;
 }
 
 .footer__logo span {
